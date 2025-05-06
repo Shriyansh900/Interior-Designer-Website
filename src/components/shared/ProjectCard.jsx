@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiMapPin, FiMaximize, FiClock, FiTag } from 'react-icons/fi';
@@ -135,6 +136,22 @@ const ProjectCard = ({ project, index }) => {
       </motion.div>
     </motion.div>
   );
+};
+ProjectCard.propTypes = {
+  project: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    details: PropTypes.shape({
+      location: PropTypes.string.isRequired,
+      area: PropTypes.string.isRequired,
+      duration: PropTypes.string.isRequired,
+      style: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default ProjectCard;
